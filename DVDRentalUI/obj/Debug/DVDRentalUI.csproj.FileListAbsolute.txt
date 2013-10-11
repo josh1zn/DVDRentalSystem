@@ -1,0 +1,9 @@
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\DVDRentalUI.dll
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\DVDRentalUI.pdb
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\obj\Debug\DVDRentalUI.csprojResolveAssemblyReference.cache
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\obj\Debug\DVDRentalUI.dll
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\obj\Debug\DVDRentalUI.pdb
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\DVDRentalData.dll
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\DVDRentalData.pdb
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\EntityFramework.dll
+C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalUI\bin\EntityFramework.xml
