@@ -15,13 +15,10 @@
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
                 url: "DVDRental.asmx/GetAllRentalItems",
-                data: "{}",
+                data: "{id:'1'}",
                 dataType: "json",
                 success: function (data) {
-                    rentalItems = data.d;
-                    $.each(rentalItems, function () {
-                        $("#lblAjaxData").append("Name: " + this.Name + "<br/>" + "Type: " + this.Type + "<br/>" + "Price: " + this.Price + "<br/>");
-                    });
+                    $("#lblAjaxData").append("Name: " + data.Name + "<br/>" + "Type: " + data.Type + "<br/>" + "Price: " + data.Price + "<br/>");
                 }
             });
         }
@@ -31,7 +28,7 @@
     <form id="form1" runat="server">
     <div class="container">
          <h1>Bootstrap </h1>
-         <table class="table" style="width:50%;margin-left:100px;">
+         <table class="table table-hover table-bordered" style="width:50%;margin-left:100px;">
              <tr><th>Joshua</th><th>Nigel</th><th>Himal</th></tr>
              <tr><td>hello</td><td>bye</td><td>maybe</td></tr>
          </table>
