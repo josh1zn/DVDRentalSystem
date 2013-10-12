@@ -38,9 +38,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -73,7 +70,9 @@
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
     <Content Include="TestBootstrap.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DVDRental.asmx.cs">
@@ -102,9 +101,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DVDRentalData\DVDRentalData.csproj">
-      <Project>{e1a14896-856d-4917-a512-fbb985a77120}</Project>
-      <Name>DVDRentalData</Name>
+    <ProjectReference Include="..\DVDRentalCode\DVDRentalCode.csproj">
+      <Project>{87129861-f978-485f-9689-5c7ba72b553f}</Project>
+      <Name>DVDRentalCode</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

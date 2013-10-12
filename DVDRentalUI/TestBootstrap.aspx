@@ -11,21 +11,18 @@
     <script src="Bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
         function makeAjaxCall() {
-            $.ajax("DVDRental.asmx/GetAllRentalItems", {
+            $.ajax({
                 type: "POST",
-                dataType: $.ajaxSetup(),
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetAllRentalItems",
+                data: "{}",
+                dataType: "json",
                 success: function (data) {
-                    alert(data.d);
-                },
-                error: function () {
-                    alert("Error");
+                    rentalItems = data.d;
+                    $.each(rentalItems, function () {
+                        $("#lblAjaxData").append("Name: " + this.Name + "<br/>" + "Type: " + this.Type + "<br/>" + "Price: " + this.Price + "<br/>");
+                    });
                 }
-            });
-        }
-
-        function makeAjaxPost() {
-            $.post("DVDRental.asmx/GetAllRentalItems", "{}", function (data) {
-                alert(data.d);
             });
         }
     </script>
@@ -39,7 +36,7 @@
              <tr><td>hello</td><td>bye</td><td>maybe</td></tr>
          </table>
         <label class="text-info">Date and time:</label><input type="text" class="text-warning"/>
-        <input type="button" value="show ajax call for data" class="btn btn-success" onclick="makeAjaxPost();"/>
+        <input type="button" value="show ajax call for data" class="btn btn-success" onclick="makeAjaxCall();"/>
         <div id="lblAjaxData"></div>
     </div>
     </form>
