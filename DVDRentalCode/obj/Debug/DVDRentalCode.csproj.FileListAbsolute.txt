@@ -1,9 +1,0 @@
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\DVDRentalCode.dll
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\DVDRentalCode.pdb
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\DVDRentalData.dll
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\EntityFramework.dll
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\DVDRentalData.pdb
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\bin\Debug\EntityFramework.xml
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\obj\Debug\DVDRentalCode.csprojResolveAssemblyReference.cache
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\obj\Debug\DVDRentalCode.dll
-C:\Users\josh1zn\Documents\Visual Studio 2012\Projects\DVDRentalSystem\DVDRentalCode\obj\Debug\DVDRentalCode.pdb
