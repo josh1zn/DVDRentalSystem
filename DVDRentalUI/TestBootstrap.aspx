@@ -14,15 +14,14 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
-                url: "DVDRental.asmx/GetRentalItemByType",
-                data: "{type:'Drama'}",
+                url: "DVDRental.asmx/GetRentalItemById",
+                data: "{id:'1'}",
                 dataType: "json",
                 success: function (data) {
-                    $("#lblAjaxData").append("Name: " + data.Name + "<br/>" + "Type: " + data.Type + "<br/>" + "Price: " + data.Price + "<br/>");
+                    $("#lblAjaxData").append("Name: " + data.d.Name + "<br/>" + "Type: " + data.d.Type + "<br/>" + "Price: " + data.d.Price + "<br/>");
                 }
             });
         }
-
 
         function makeAjaxCallForType() {
             $.ajax({  type: "POST",
@@ -57,7 +56,9 @@
              <tr><td>hello</td><td>bye</td><td>maybe</td></tr>
          </table>
         <label class="text-info">Date and time:</label><input type="text" class="text-warning"/>
-        <input type="button" value="show ajax call for data" class="btn btn-success" onclick="makeAjaxCall();"/>
+        <input type="button" value="show item 1" class="btn btn-success" onclick="makeAjaxCall();"/>
+
+        <input type="button" value="show all dvd items" class="btn btn-success" onclick="makeAjaxCallForType();"/>
         <div id="lblAjaxData"></div>
     </div>
     </form>
