@@ -14,14 +14,38 @@
             $.ajax({
                 type: "POST",
                 contentType: "application/json; charset=utf-8",
-                url: "DVDRental.asmx/GetAllRentalItems",
-                data: "{id:'1'}",
+                url: "DVDRental.asmx/GetRentalItemByType",
+                data: "{type:'Drama'}",
                 dataType: "json",
                 success: function (data) {
                     $("#lblAjaxData").append("Name: " + data.Name + "<br/>" + "Type: " + data.Type + "<br/>" + "Price: " + data.Price + "<br/>");
                 }
             });
         }
+
+
+        function makeAjaxCallForType() {
+            $.ajax({  type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetAllRentalItemsByType",
+                data: "{type: 'DVD'}",
+                dataType: "json",
+                success: function (data) 
+                {
+                    rentalItems = data.d;
+                    $.each(rentalItems, function () 
+                    {
+                        $("#lblAjaxData").append("Name: " + this.Name + "<br/>" + "Type: " + this.Type + "<br/>" + "Price: " + this.Price + "<br/>"); 
+                    }
+                    );
+
+                }
+            })
+            }
+
+        
+
+       
     </script>
 </head>
 <body>
