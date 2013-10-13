@@ -1,0 +1,20 @@
+Insert data (scripts)
+code bll classes with webservice methods
+Create Master page
+cryptographic class
+
+
+
+roles
+--------
+	Admin
+	Clerk
+	Customer
+
+pages
+--------
+
+
+	Admin - Create employees
+	Customer - View customer details
+	Clerk - make sale, create customer, send notifications, view notifications sent
