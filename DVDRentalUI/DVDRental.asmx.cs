@@ -23,5 +23,42 @@ namespace DVDRentalUI
             var ri = new RentalItemBLL();
             return ri.GetAllRentalItems(Convert.ToInt32(id));
         }
+
+        [WebMethod]
+        public void AddSales(String d, String r, String c, String e)
+        {
+            var s = new SalesBLL();
+            s.AddSales(Convert.ToDateTime(d), Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
+        }
+
+        [WebMethod]
+        public void AddUser(string name, string surname, string idnumber, string address, string contactNumber, string email, string role, string username, string password)
+        {
+            new UserBLL().AddUser(name, surname, idnumber, address, contactNumber, email, role, username, password);
+        }
+
+        [WebMethod]
+        public List<UserDto> getAllCustomers()
+        {
+            return new UserBLL().getAllCustomers();
+        }
+
+        [WebMethod]
+        public UserDto getCustomer(string id)
+        {
+            return new UserBLL().getCustomer(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public UserDto getCustomer(string idnumber)
+        {
+            return new UserBLL().getCustomer(Convert.ToInt32(idnumber));
+        }
+
+        [WebMethod]
+        public List<UserDto> getAllClerks()
+        {
+            return new UserBLL().getAllClerks();
+        }
     }
 }

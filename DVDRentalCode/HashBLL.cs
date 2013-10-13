@@ -7,7 +7,7 @@ using System.Security.Cryptography;
 
 namespace DVDRentalCode
 {
-	class Hash
+	class HashBLL
 	{
 		public String CreateHash(MD5 md5Hash, string input)
 		{
