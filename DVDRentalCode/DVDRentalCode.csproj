@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Hash.cs" />
+    <Compile Include="HashBLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RentalItemBLL.cs" />
+    <Compile Include="SalesBLL.cs" />
+    <Compile Include="UserBLL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DVDRentalData\DVDRentalData.csproj">
