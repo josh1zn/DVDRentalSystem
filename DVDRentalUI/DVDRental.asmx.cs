@@ -18,10 +18,17 @@ namespace DVDRentalUI
     public class DVDRental : System.Web.Services.WebService
     {
         [WebMethod]
-        public RentalItemDto GetAllRentalItems(string id)
+        public RentalItemDto GetRentalItemById(string id)
         {
             var ri = new RentalItemBLL();
-            return ri.GetAllRentalItems(Convert.ToInt32(id));
+            return ri.GetRentalItemById(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public List<RentalItemDto> GetAllRentalItemsByType(string type)
+        {
+            var ri = new RentalItemBLL();
+            return ri.GetAllRentalItemsByType(type);
         }
     }
 }
