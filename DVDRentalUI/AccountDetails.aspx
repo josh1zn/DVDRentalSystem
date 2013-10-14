@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="Account Details.aspx.cs" Inherits="DVDRentalUI.Account_Details" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="AccountDetails.aspx.cs" Inherits="DVDRentalUI.Account_Details" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src="Scripts/jquery-2.0.3.min.js"></script>
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />

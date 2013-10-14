@@ -87,29 +87,36 @@ namespace DVDRentalUI
         }
 
         [WebMethod(EnableSession = true)]
-        public bool checkLogin(string username, string password)
+        public resultDto checkLogin(string username, string password)
         {
             HashBLL h = new HashBLL();
-            bool result;
+            resultDto result = new resultDto();
             var user = new UserBLL().getUserCredentials(username);
             if (user != null)
             {
                 if (h.VerifyHash(password, user.Password))
                 {
                     //login details are correct
-                    result = true;
+                    result.Pass = "true";
+                    result.Role = user.Role;
                     Session.Timeout = 30;
                     Session["ID"] = user.ID;
                     Session["UserName"] = user.Username;
                     Session["Role"] = user.Role;
                 }
                 else
-                    result = false;
+                    result.Pass = "false";
             }
             else
-                result = false;
+                result.Pass = "false";
 
             return result;
+        }
+
+        public class resultDto
+        {
+            public string Pass { get; set; }
+            public string Role { get; set; }
         }
     }
 }
