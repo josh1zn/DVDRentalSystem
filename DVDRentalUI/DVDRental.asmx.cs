@@ -17,6 +17,7 @@ namespace DVDRentalUI
     [System.Web.Script.Services.ScriptService]
     public class DVDRental : System.Web.Services.WebService
     {
+        //RENTAL METHODS
         [WebMethod]
         public RentalItemDto GetRentalItemById(string id)
         {
@@ -31,6 +32,7 @@ namespace DVDRentalUI
             return ri.GetAllRentalItemsByType(type);
         }
 
+        //SALES METHODS
         [WebMethod]
         public void AddSales(String r, String c, String e)
         {
@@ -38,6 +40,8 @@ namespace DVDRentalUI
             s.AddSales(Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
         }
 
+
+        //USER METHODS
         [WebMethod]
         public void AddUser(string name, string surname, string idnumber, string address, string contactNumber, string email, string role, string username, string password)
         {
@@ -69,9 +73,22 @@ namespace DVDRentalUI
         }
 
         [WebMethod]
+        public List<UserDto> GetAllUsersWithFines()
+        {
+            return new UserBLL().getUserFines();
+        }
+
+        //NOTIFICATION METHODS
+        [WebMethod]
         public NotificationDto GetNotificationById(string id)
         {
             return new NotificationBLL().GetNotificationById(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public void SendNotification(string id)
+        {
+            new NotificationBLL().AddNotification(Convert.ToInt32(id));
         }
 
         [WebMethod]
@@ -86,6 +103,7 @@ namespace DVDRentalUI
             return new NotificationBLL().GetAllNotifications();
         }
 
+        //SESSION METHOD
         [WebMethod(EnableSession = true)]
         public resultDto checkLogin(string username, string password)
         {

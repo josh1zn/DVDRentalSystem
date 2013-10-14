@@ -8,27 +8,20 @@
     <script src="Scripts/Custom.js"></script>
 
     <script type="text/javascript">
-
         ////main method
         function viewAllNotifications() {
             HandleAjax("GetAllNotifications", "{}", populateNotifications)
         }
-
-        ////called method
+        ////called method to populate notifications table with customers
         function populateNotifications(data) {
-
             var items = data.d;
-
             $("#notificationsTable").empty();
-
             $("#notificationsTable").append("<tr>"
                         + "<th>Notification #</th>"
                         + "<th>Date of notification</th>"
                         + "<th>Customer Full Name</th>"
                  + "</tr>");
-
             $.each(items, function (i, o) {
-
                 $("#notificationsTable").append("<tr>"
                                                     + "<td>" + o.ID + "</td>"
                                                     + "<td>" + o.Date + "</td>"
@@ -36,10 +29,7 @@
                                                     + "<tr/>");
             });
         }
-
     </script>
-
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="panel panel-primary">
@@ -48,11 +38,9 @@
         </div>
         <div class="panel-body">
             <input type="button" id="btnViewAllNotifs" value="Show all notifications" class="btn btn-success" onclick="viewAllNotifications();" />
-
             <table id="notificationsTable" class="table table-bordered table-hover table-condensed">
             </table>
         </div>
     </div>
-    
 </asp:Content>
 

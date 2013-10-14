@@ -10,11 +10,6 @@ namespace DVDRentalCode
     public class NotificationBLL
     {
 
-     
-
-
-
-        
         public NotificationDto GetNotificationById(int id)
         {
             DVDRentalEntities db = new DVDRentalEntities();
@@ -40,17 +35,16 @@ namespace DVDRentalCode
             return LRI;
         }
         //Add notifications that use the getUserFines method in the user class.
-        public void AddNotification(DateTime date, int cid)
+        public void AddNotification(int cid)
         {
             var db = new DVDRentalEntities();
             var n = new Notification
             {
-                Date = date,
+                Date = DateTime.Now,
                 CustomerID = cid,
             };
             db.Notifications.Add(n);
             db.SaveChanges();
-
         }
 
         public List<NotificationDto> GetAllNotifications()
@@ -63,15 +57,13 @@ namespace DVDRentalCode
                 LRI.Add(new NotificationDto
                 {
                     ID = n.ID.ToString(),
-                    Date = n.Date.ToString(),
+                    Date = n.Date.ToString("dd MMM yyyy H:mm"),
                     CustomerID = n.CustomerID.ToString(),
                     FName = n.User.Name + " " + n.User.Surname,
                 });
             }
             return LRI;
         }
-
-
     }
 
     public class NotificationDto
@@ -80,5 +72,6 @@ namespace DVDRentalCode
         public string Date { get; set; }
         public string CustomerID { get; set; }
         public string FName { get; set; }
+     
     }
 }
