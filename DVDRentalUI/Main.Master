@@ -14,7 +14,10 @@
                     url: "DVDRental.asmx/" + methodName,
                     data: data == null ? "{}" : data,
                     dataType: "json",
-                    success: successMethod
+                    success: successMethod,
+                    error: function (request, status, error) {
+                        alert(request.responseText);
+                    }
                 });
             }
         </script>

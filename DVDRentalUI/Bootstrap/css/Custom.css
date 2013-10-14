@@ -4,6 +4,10 @@
     margin-right: auto;
 }
 
+body {
+    background-color:whitesmoke;
+}
+
 .login {
     padding-top:100px;
     width:400px;
