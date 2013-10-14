@@ -39,7 +39,7 @@ namespace DVDRentalCode
             }
             return LRI;
         }
-        //Add notifications that use the getUserFines method.
+        //Add notifications that use the getUserFines method in the user class.
         public void AddNotification(DateTime date, int cid)
         {
             var db = new DVDRentalEntities();

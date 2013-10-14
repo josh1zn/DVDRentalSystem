@@ -126,7 +126,7 @@ namespace DVDRentalCode
                 Role = u.Role
             };
         }
-        //Get user fines for sending notifications page.
+        //Get user fines for sending notifications page.Fines with a balance more then 0
         public List<UserDto> getUserFines()
         {
             DVDRentalEntities db = new DVDRentalEntities();
