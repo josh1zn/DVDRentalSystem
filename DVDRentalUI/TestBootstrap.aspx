@@ -72,6 +72,24 @@
                 }
             })
         }
+
+        function macNotificationsAll() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetAllNotifications",
+                data: "{}",
+                dataType: "json",
+                success: function (data) {
+                    rentalItems = data.d;
+                    $.each(rentalItems, function () {
+                        $("#lblAjaxData").append("ID: " + this.Name + "<br/>" + "Date: " + this.Type + "<br/>" + "CustomerID: " + this.Price + "<br/>");
+                    }
+                    );
+
+                }
+            })
+        }
         
 
        

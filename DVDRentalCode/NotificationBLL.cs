@@ -34,6 +34,23 @@ namespace DVDRentalCode
             return LRI;
         }
 
+        public List<NotificationDto> GetAllNotifications()
+        {
+            DVDRentalEntities db = new DVDRentalEntities();
+            List<NotificationDto> LRI = new List<NotificationDto>();
+
+            foreach (var n in db.Notifications)
+            {
+                LRI.Add(new NotificationDto
+                {
+                    ID = n.ID.ToString(),
+                    Date = n.Date.ToString(),
+                    CustomerID = n.CustomerID.ToString(),
+                });
+            }
+            return LRI;
+        }
+
     }
 
     public class NotificationDto
