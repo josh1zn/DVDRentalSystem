@@ -114,6 +114,18 @@ namespace DVDRentalCode
             }
             return LU;
         }
+
+        public UserDto getUserCredentials(string username)
+        {
+            DVDRentalEntities db = new DVDRentalEntities();
+            var u = db.Users.FirstOrDefault(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase));
+            return new UserDto()
+            {
+                ID = u.ID.ToString(),
+                Username = u.Username,
+                Role = u.Role
+            };
+        }
     }
 
     public class UserDto

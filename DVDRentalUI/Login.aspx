@@ -21,6 +21,7 @@
                 <input type="text" id="txtUsername" class="form-control" placeholder="Username" /><br />
                 <input type="password" id="txtPassword" class="form-control" placeholder="Password" /><br />
                 <button type="button" class="btn btn-primary btn-block">Sign in</button>
+                <button type="button" class="btn btn-primary btn-block">Reset password</button>
             </div>
             <p class="text-center muted ">&copy; Copyright 2013</p>
         </div>

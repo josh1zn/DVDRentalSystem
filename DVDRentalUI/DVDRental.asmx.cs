@@ -67,5 +67,11 @@ namespace DVDRentalUI
         {
             return new UserBLL().getAllClerks();
         }
+
+        [WebMethod]
+        public UserDto getUserCredentials(string username)
+        {
+            return new UserBLL().getUserCredentials(username);
+        }
     }
 }
