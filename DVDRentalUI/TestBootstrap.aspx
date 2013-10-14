@@ -9,6 +9,7 @@
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <script src="Scripts/jquery-2.0.3.min.js"></script>
     <script src="Bootstrap/js/bootstrap.min.js"></script>
+    <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
     <script type="text/javascript">
         function makeAjaxCall() {
             $.ajax({
