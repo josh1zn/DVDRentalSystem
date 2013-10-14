@@ -119,13 +119,18 @@ namespace DVDRentalCode
         {
             DVDRentalEntities db = new DVDRentalEntities();
             var u = db.Users.FirstOrDefault(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase));
-            return new UserDto()
+            if (u != null)
             {
-                ID = u.ID.ToString(),
-                Username = u.Username,
-                Password = u.Password,
-                Role = u.Role
-            };
+                return new UserDto()
+                {
+                    ID = u.ID.ToString(),
+                    Username = u.Username,
+                    Password = u.Password,
+                    Role = u.Role
+                };
+            }
+            else
+                return null;
         }
         //Get user fines for sending notifications page.Fines with a balance more then 0
         public List<UserDto> getUserFines()

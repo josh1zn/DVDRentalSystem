@@ -22,15 +22,14 @@ namespace DVDRentalCode
              db.Sales.Add(s);
              db.SaveChanges();
          }
-         //get sales method (will code if needed).   
+
+         public void updateBalance(int customerID, int rentalID)
+         {
+             DVDRentalEntities db = new DVDRentalEntities();
+             var customer = db.Users.FirstOrDefault(x => x.ID == customerID);
+             customer.Balance += Convert.ToDecimal(new RentalItemBLL().GetRentalItemById(rentalID).Price);
+             db.SaveChanges();
+         }
     }
-    //Use when retrieving all sales /particular sales from the dtatabse if needed.
-    // public class SalesDto
-     //{
-       //  public String Date { get; set; }
-        // public String RentalItemID { get; set; }
-        // public String CustomerID { get; set; }
-         //public String EmployeeID { get; set; }
-     // }
 
 }

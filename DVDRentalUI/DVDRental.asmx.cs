@@ -37,8 +37,8 @@ namespace DVDRentalUI
         {
             var s = new SalesBLL();
             s.AddSales(Convert.ToInt32(rentalItemID), Convert.ToInt32(customerID), Convert.ToInt32(Session["ID"]));
+            s.updateBalance(Convert.ToInt32(customerID), Convert.ToInt32(rentalItemID));
         }
-
 
         //USER METHODS
         [WebMethod]
@@ -125,7 +125,7 @@ namespace DVDRentalUI
                     result.Pass = "Incorrect Password";
             }
             else
-                result.Pass = "Incorrect Username";
+                result.Pass = "Username Does not Exist.";
 
             return result;
         }
