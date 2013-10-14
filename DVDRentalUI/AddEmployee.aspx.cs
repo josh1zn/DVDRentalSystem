@@ -11,7 +11,10 @@ namespace DVDRentalUI.Pages
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            var id = Session["ID"];
+            var role = Session["Role"];
+            var username = Session["Username"];
+            sbyte pass;
         }
     }
 }

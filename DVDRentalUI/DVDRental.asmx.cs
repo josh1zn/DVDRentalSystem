@@ -113,6 +113,12 @@ namespace DVDRentalUI
             return result;
         }
 
+        [WebMethod(EnableSession=true)]
+        public void logout()
+        {
+            Session.Abandon();
+        }
+
         public class resultDto
         {
             public string Pass { get; set; }
