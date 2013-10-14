@@ -9,6 +9,12 @@ namespace DVDRentalCode
 {
     public class NotificationBLL
     {
+
+     
+
+
+
+        
         public NotificationDto GetNotificationById(int id)
         {
             DVDRentalEntities db = new DVDRentalEntities();
@@ -33,6 +39,19 @@ namespace DVDRentalCode
             }
             return LRI;
         }
+        //Add notifications that use the getUserFines method in the user class.
+        public void AddNotification(DateTime date, int cid)
+        {
+            var db = new DVDRentalEntities();
+            var n = new Notification
+            {
+                Date = date,
+                CustomerID = cid,
+            };
+            db.Notifications.Add(n);
+            db.SaveChanges();
+
+        }
 
         public List<NotificationDto> GetAllNotifications()
         {
@@ -50,6 +69,7 @@ namespace DVDRentalCode
             }
             return LRI;
         }
+
 
     }
 

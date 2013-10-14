@@ -127,6 +127,33 @@ namespace DVDRentalCode
                 Role = u.Role
             };
         }
+        //Get user fines for sending notifications page.Fines with a balance more then 0
+        public List<UserDto> getUserFines()
+        {
+            DVDRentalEntities db = new DVDRentalEntities();
+            var fines = db.Users.Where(x => x.Fine > 0);
+            List<UserDto> FU = new List<UserDto>();
+
+            foreach (var f in fines)
+            {
+                FU.Add(new UserDto
+                {
+                    ID=f.ID.ToString(),
+                    Name = f.Name,
+                    Surname = f.Surname,
+                    IDNumber = f.IDNumber,
+                    Address = f.Address,
+                    ContactNumber = f.ContactNumber,
+                    Email = f.Email,
+                    Balance=f.Balance.ToString(),
+                    Fine = f.Fine.ToString(),
+                });
+            }
+            return FU;
+
+
+            }
+        }
     }
 
     public class UserDto
@@ -144,4 +171,4 @@ namespace DVDRentalCode
         public string Username { get; set; }
         public string Password { get; set; }
     }
-}
+
