@@ -67,5 +67,17 @@ namespace DVDRentalUI
         {
             return new UserBLL().getAllClerks();
         }
+
+        [WebMethod]
+        public NotificationDto GetNotificationById(string id)
+        {
+            return new NotificationBLL().GetNotificationById(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public List<NotificationDto> GetAllNotificationsByDate(string date)
+        {
+            return new NotificationBLL().GetAllNotificationsByDate(date);
+        }
     }
 }
