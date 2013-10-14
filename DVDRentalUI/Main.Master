@@ -11,6 +11,29 @@
         <script src="Bootstrap/js/bootstrap.min.js"></script>
         <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
     </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function Logout() {
+            HandleAjax("logout", "{}", redirectToLogin);
+        }
+
+        function redirectToLogin() {
+            location.href = "Login.aspx";
+        }
+
+        function HandleAjax(methodName, data, successMethod) {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/" + methodName,
+                data: data == null ? "{}" : data,
+                dataType: "json",
+                success: successMethod,
+                error: function (request, status, error) {
+                    alert(request.responseText);
+                }
+            });
+        }
+    </script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -34,6 +57,9 @@
                     <li id="viewNotifications" class="navbar-link"><a href="#">View Notifications</a></li>
                     <li id="addEmployee" class="navbar-link"><a href="#">Add Employee</a></li>
                     <li id="accountDetails" class="navbar-link"><a href="#">Account Details</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="navbar-link"><a href="#" onclick="Logout();">Logout</a></li>
                 </ul>
             </div>
         </nav>
