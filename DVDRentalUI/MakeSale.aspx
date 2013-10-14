@@ -5,6 +5,7 @@
     <script src="Bootstrap/js/bootstrap.js"></script>
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
+    <script src="Scripts/Custom.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             getItemsByType("Game");
@@ -12,6 +13,7 @@
         });
 
         function getItemsByType(type) {
+            
             HandleAjax("GetAllRentalItemsByType", "{type:'" + type + "'}", populateItems);
         }
 
@@ -34,7 +36,7 @@
         }
 
         function refreshItems() {
-            var type = $("#dlType").text();
+            var type = $("#dlType").val();
             getItemsByType(type);
         }
 
@@ -55,9 +57,9 @@
         </div>
         <div class="panel-body">
             <table>
-                <tr><td style="padding:10px;">Rental Item Type: </td><td style="padding:10px;"><select id="dlType" class="form-control" onchange="refreshItems();"><option>Game</option><option>DVD</option><option>BlueRay</option></select></td></tr>
-                <tr><td style="padding:10px;">Rental Item: </td><td style="padding:10px;"><select id="dlItem" class="form-control"><option>Select Rental Item...</option></select></td></tr>
-                <tr><td style="padding:10px;">Customer: </td><td style="padding:10px;"><select id="dlCustomer" class="form-control"><option>Select Customer</option></select></td></tr>
+                <tr><td style="padding:10px;">Rental Item Type: </td><td style="padding:10px;"><select id="dlType" class="form-control" onchange="refreshItems();"><option>Game</option><option>DVD</option><option>BluRay</option></select></td></tr>
+                <tr><td style="padding:10px;">Rental Item: </td><td style="padding:10px;"><select id="dlItem" class="form-control"></select></td></tr>
+                <tr><td style="padding:10px;">Customer: </td><td style="padding:10px;"><select id="dlCustomer" class="form-control"></select></td></tr>
                 <tr><td style="padding:10px;"></td><td style="padding:10px;"><input id="btnAdd" type="button" value="Record Sale" class="btn btn-primary" onclick="addSale();"/></td></tr>
             </table>
         </div>
