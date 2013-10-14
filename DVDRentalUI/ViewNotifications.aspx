@@ -8,6 +8,9 @@
     <script src="Scripts/Custom.js"></script>
 
     <script type="text/javascript">
+        $(document).ready(function () {
+            viewAllNotifications();
+        });
         ////main method
         function viewAllNotifications() {
             HandleAjax("GetAllNotifications", "{}", populateNotifications)
@@ -37,8 +40,8 @@
             <h2 class="panel-title">Notifications:</h2>
         </div>
         <div class="panel-body">
-            <input type="button" id="btnViewAllNotifs" value="Show all notifications" class="btn btn-success" onclick="viewAllNotifications();" />
             <table id="notificationsTable" class="table table-bordered table-hover table-condensed">
+                <caption><b>Customers with notifications</b></caption>
             </table>
         </div>
     </div>
