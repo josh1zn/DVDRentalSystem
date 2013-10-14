@@ -12,6 +12,24 @@
         <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
     </asp:ContentPlaceHolder>
     <script type="text/javascript">
+        $(document).ready(function () {
+            var role = $("#<%= hfRole.ClientID %>").val();
+            if (role == "Customer") {
+                $("#addCustomer").hide();
+                $("#makeSale").hide();
+                $("#sendNotifications").hide();
+                $("#viewNotifications").hide();
+                $("#addEmployee").hide();
+                $("#viewCustomer").hide();
+            }
+            else if (role == "Administrator") {
+                $("#accountDetails").hide();
+            }
+            else if (role == "Clerk") {
+                $("#accountDetails").hide();
+                $("#addEmployee").hide();
+            }
+        });
         function Logout() {
             HandleAjax("logout", "{}", redirectToLogin);
         }
@@ -51,12 +69,13 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav">
-                    <li id="addCustomer" class="navbar-link"><a href="#">Add Customer</a></li>
-                    <li id="makeSale" class="navbar-link"><a href="#">Make Sale</a></li>
-                    <li id="sendNotifications" class="navbar-link"><a href="#">Send Notifications</a></li>
-                    <li id="viewNotifications" class="navbar-link"><a href="#">View Notifications</a></li>
-                    <li id="addEmployee" class="navbar-link"><a href="#">Add Employee</a></li>
-                    <li id="accountDetails" class="navbar-link"><a href="#">Account Details</a></li>
+                    <li id="addCustomer" class="navbar-link"><a href="AddCustomer.aspx">Add Customer</a></li>
+                    <li id="makeSale" class="navbar-link"><a href="MakeSale.aspx">Make Sale</a></li>
+                    <li id="sendNotifications" class="navbar-link"><a href="SendNotifications.aspx">Send Notifications</a></li>
+                    <li id="viewNotifications" class="navbar-link"><a href="ViewNotifications.aspx">View Notifications</a></li>
+                    <li id="addEmployee" class="navbar-link"><a href="AddEmployee.aspx">Add Employee</a></li>
+                    <li id="viewCustomer" class="navbar-link"><a href="#">View Customer</a></li>
+                    <li id="accountDetails" class="navbar-link"><a href="AccountDetails.aspx">Account Details</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="navbar-link"><a href="#" onclick="Logout();">Logout</a></li>
@@ -67,6 +86,7 @@
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
             </asp:ContentPlaceHolder>
         </div>
+        <asp:HiddenField ID="hfRole" runat="server" Value="" />
     </form>
 </body>
 </html>

@@ -7,12 +7,12 @@
       <Diagram DiagramId="fc2140c325154d1496e2722b02c095c9" Name="Diagram1">
         <EntityTypeShape EntityType="DVDRentalModel.Notification" Width="1.5" PointX="3" PointY="4.125" IsExpanded="true" />
         <EntityTypeShape EntityType="DVDRentalModel.RentalItem" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DVDRentalModel.Sale" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="DVDRentalModel.User" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
         <AssociationConnector Association="DVDRentalModel.FK_Notifications_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="DVDRentalModel.FK_Sales_RentalItems" ManuallyRouted="false" />
-        <AssociationConnector Association="DVDRentalModel.FK_Sales_Customers" ManuallyRouted="false" />
-        <AssociationConnector Association="DVDRentalModel.FK_Sales_Employees" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DVDRentalModel.Sale" Width="1.5" PointX="5.875" PointY="5.625" />
+        <AssociationConnector Association="DVDRentalModel.FK_Sales_RentalItems" />
+        <AssociationConnector Association="DVDRentalModel.FK_Sales_Customers" />
+        <AssociationConnector Association="DVDRentalModel.FK_Sales_Employees" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

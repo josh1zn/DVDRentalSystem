@@ -27,7 +27,7 @@ namespace DVDRentalData
     
         public DbSet<Notification> Notifications { get; set; }
         public DbSet<RentalItem> RentalItems { get; set; }
-        public DbSet<Sale> Sales { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<Sale> Sales { get; set; }
     }
 }

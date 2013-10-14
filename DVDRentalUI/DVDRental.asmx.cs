@@ -31,11 +31,11 @@ namespace DVDRentalUI
             return ri.GetAllRentalItemsByType(type);
         }
 
-        [WebMethod]
-        public void AddSales(String r, String c, String e)
+        [WebMethod(EnableSession=true)]
+        public void AddSales(String rentalItemID, String customerID)
         {
             var s = new SalesBLL();
-            s.AddSales(Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
+            s.AddSales(Convert.ToInt32(rentalItemID), Convert.ToInt32(customerID), Convert.ToInt32(Session["ID"]));
         }
 
         [WebMethod]
@@ -105,10 +105,10 @@ namespace DVDRentalUI
                     Session["Role"] = user.Role;
                 }
                 else
-                    result.Pass = "false";
+                    result.Pass = "Incorrect Password";
             }
             else
-                result.Pass = "false";
+                result.Pass = "Incorrect Username";
 
             return result;
         }
