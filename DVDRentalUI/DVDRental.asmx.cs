@@ -62,7 +62,7 @@ namespace DVDRentalUI
         [WebMethod]
         public UserDto getCustomerByIDNumber(string idnumber)
         {
-            return new UserBLL().getCustomer(Convert.ToInt32(idnumber));
+            return new UserBLL().getCustomer(idnumber);
         }
 
         [WebMethod]
