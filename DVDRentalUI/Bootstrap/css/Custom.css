@@ -1,0 +1,17 @@
+﻿.align-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+    background-color:whitesmoke;
+}
+
+.login {
+    padding-top:100px;
+    width:400px;
+    height:400px;
+}
+
+
