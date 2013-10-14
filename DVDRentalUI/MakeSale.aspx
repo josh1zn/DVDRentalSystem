@@ -13,12 +13,12 @@
         });
 
         function getItemsByType(type) {
-            
             HandleAjax("GetAllRentalItemsByType", "{type:'" + type + "'}", populateItems);
         }
 
         function populateItems(data) {
             var items = data.d;
+            $("#dlItem").empty();
             $.each(items, function (i,o) {
                 $("#dlItem").append("<option value='" + o.ID + "'>" + o.Name + "</option>");
             });
@@ -57,7 +57,7 @@
         </div>
         <div class="panel-body">
             <table>
-                <tr><td style="padding:10px;">Rental Item Type: </td><td style="padding:10px;"><select id="dlType" class="form-control" onchange="refreshItems();"><option>Game</option><option>DVD</option><option>BluRay</option></select></td></tr>
+                <tr><td style="padding:10px;width:200px;">Rental Item Type: </td><td style="padding:10px;width:200px;"><select id="dlType" class="form-control" onchange="refreshItems();"><option>Game</option><option>DVD</option><option>BluRay</option></select></td></tr>
                 <tr><td style="padding:10px;">Rental Item: </td><td style="padding:10px;"><select id="dlItem" class="form-control"></select></td></tr>
                 <tr><td style="padding:10px;">Customer: </td><td style="padding:10px;"><select id="dlCustomer" class="form-control"></select></td></tr>
                 <tr><td style="padding:10px;"></td><td style="padding:10px;"><input id="btnAdd" type="button" value="Record Sale" class="btn btn-primary" onclick="addSale();"/></td></tr>
