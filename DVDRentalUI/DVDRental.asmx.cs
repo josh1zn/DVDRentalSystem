@@ -69,9 +69,15 @@ namespace DVDRentalUI
         }
 
         [WebMethod]
-        public UserDto getUserCredentials(string username)
+        public NotificationDto GetNotificationById(string id)
         {
-            return new UserBLL().getUserCredentials(username);
+            return new NotificationBLL().GetNotificationById(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public List<NotificationDto> GetAllNotificationsByDate(string date)
+        {
+            return new NotificationBLL().GetAllNotificationsByDate(date);
         }
     }
 }
