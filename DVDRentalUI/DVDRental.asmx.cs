@@ -98,6 +98,10 @@ namespace DVDRentalUI
                 {
                     //login details are correct
                     result = true;
+                    Session.Timeout = 30;
+                    Session["ID"] = user.ID;
+                    Session["UserName"] = user.Username;
+                    Session["Role"] = user.Role;
                 }
                 else
                     result = false;

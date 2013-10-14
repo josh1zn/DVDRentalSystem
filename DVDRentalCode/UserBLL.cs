@@ -12,7 +12,7 @@ namespace DVDRentalCode
         public void AddUser(string name, string surname, string idnumber, string address, string contactNumber, string email, string role, string username, string password)
         {
             DVDRentalEntities db = new DVDRentalEntities();
-
+            string hashPass = new HashBLL().CreateHash(password);
             User u = new User 
             {
                 Name = name,
@@ -23,7 +23,7 @@ namespace DVDRentalCode
                 Email = email,
                 Role = role,
                 Username = username,
-                Password = password
+                Password = hashPass
             };
 
             db.Users.Add(u);

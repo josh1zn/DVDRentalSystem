@@ -8,7 +8,7 @@
 
         <script type="text/javascript">
             function addCustomer() {
-                var data = "{name:'" + $("#txtName").val() + "', surname:'" + $("#txtSurname").val() + "', idnumber:'" + $("#txtID").val() + "', address:'" + $("#txtAdd").val() + "', contactNumber:'" + $("#txtCont").val() + "', email:'" + $("#txtEmail").val() + "', username:'" + $("#txtUsername").val() + "', password:'" + $("#Passwprd").val() + "'}";
+                var data = "{name:'" + $("#txtName").val() + "', surname:'" + $("#txtSurname").val() + "', idnumber:'" + $("#txtID").val() + "', address:'" + $("#txtAdd").val() + "', contactNumber:'" + $("#txtCont").val() + "', role:'Customer', email:'" + $("#txtEmail").val() + "', username:'" + $("#txtUsername").val() + "', password:'" + $("#Password").val() + "'}";
                 HandleAjax("AddUser", data, saveCustomer);
             }
 
@@ -36,7 +36,6 @@
                 <tr><td style="padding:10px;">Password: </td><td style="padding:10px;"><input id="Password" type ="password" name ="Password" placeholder ="Password" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;"></td><td style="padding:10px;"><input id="btnAdd" type="button" value="Add Customer" class="btn btn-primary" onclick="addCustomer();"/></td></tr>
             </table>
-
         </div>
     </div>
 </asp:Content>
