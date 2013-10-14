@@ -9,7 +9,7 @@
 
         <script type="text/javascript">
             function addEmployee() {
-                var data = "{nm:'" + $("#txtName").val() + "', snm:'" + $("#txtSurname").val() + "', idno:'" + $("#txtID").val() + "', add:'" + $("#txtAdd").val() + "', emi:'" + $("#txtEmail").val() + "', rol:'" + $("#dlRole").val() + "', usr:'" + $("#txtUsername").val() + "', pass:'" + $("#Passwprd").val() + "'}";
+                var data = "{name:'" + $("#txtName").val() + "', surname:'" + $("#txtSurname").val() + "', idnumber:'" + $("#txtID").val() + "', address:'" + $("#txtAdd").val() + "', contactNumber:'" + $("#txtCont").val() + "', email:'" + $("#txtEmail").val() + "', role:'" + $("#dlRole").val() + "', username:'" + $("#txtUsername").val() + "', password:'" + $("#Passwprd").val() + "'}";
                 HandleAjax("AddUser", data, saveEmployee);
             }
 
@@ -31,6 +31,7 @@
                 <tr><td style="padding:10px;">Surname: </td><td style="padding:10px;"><input id="txtSurname" type ="text" name ="Surname" placeholder ="Surname" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;">ID Number: </td><td style="padding:10px;"><input id="txtID" type ="text" name ="ID Num" placeholder ="Identification Number" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;">Address: </td><td style="padding:10px;"><input id="txtAdd" type ="text" name ="Address" placeholder ="Home Address, City" class ="form-control"/></td></tr>
+                <tr><td style="padding:10px;">Contact Number: </td><td style="padding:10px;"><input id="txtCont" type ="text" name ="Contact Number" placeholder ="Contact Number" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;">Email: </td><td style="padding:10px;"><input id="txtEmail" type ="email" name ="Email" placeholder ="Email Address" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;">Username: </td><td style="padding:10px;"><input id="txtUsername" type ="text" name ="Username" placeholder ="Username" class ="form-control"/></td></tr>
                 <tr><td style="padding:10px;">Password: </td><td style="padding:10px;"><input id="Password" type ="password" name ="Password" placeholder ="Password" class ="form-control"/></td></tr>
