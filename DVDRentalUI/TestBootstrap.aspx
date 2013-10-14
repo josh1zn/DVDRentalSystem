@@ -42,7 +42,54 @@
                 }
             })
             }
+        function macNotificationsID() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetNotificationById",
+                data: "{id:'1'}",
+                dataType: "json",
+                success: function (data) {
+                    $("#lblAjaxData").append("ID: " + data.d.ID + "<br/>" + "Date: " + data.d.Date + "<br/>" + "CustomerID: " + data.d.CustomerID + "<br/>");
+                }
+            });
+        }
 
+        function macNotificationsAllDate() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetAllNotificationsByDate",
+                data: "{date: '1990-01-01'}",
+                dataType: "json",
+                success: function (data) {
+                    rentalItems = data.d;
+                    $.each(rentalItems, function () {
+                        $("#lblAjaxData").append("ID: " + this.Name + "<br/>" + "Date: " + this.Type + "<br/>" + "CustomerID: " + this.Price + "<br/>");
+                    }
+                    );
+
+                }
+            })
+        }
+
+        function macNotificationsAll() {
+            $.ajax({
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                url: "DVDRental.asmx/GetAllNotifications",
+                data: "{}",
+                dataType: "json",
+                success: function (data) {
+                    rentalItems = data.d;
+                    $.each(rentalItems, function () {
+                        $("#lblAjaxData").append("ID: " + this.Name + "<br/>" + "Date: " + this.Type + "<br/>" + "CustomerID: " + this.Price + "<br/>");
+                    }
+                    );
+
+                }
+            })
+        }
         
 
        
@@ -60,6 +107,9 @@
         <input type="button" value="show item 1" class="btn btn-success" onclick="makeAjaxCall();"/>
 
         <input type="button" value="show all dvd items" class="btn btn-success" onclick="makeAjaxCallForType();"/>
+        <input type="button" value="Notifications: One by ID" class="btn btn-success" onclick="macNotificationsID();"/>
+
+        <input type="button" value="Notifications: All By Date" class="btn btn-success" onclick="macNotificationsAllDate();"/>
         <div id="lblAjaxData"></div>
     </div>
     </form>

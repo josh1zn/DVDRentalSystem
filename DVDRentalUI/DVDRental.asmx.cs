@@ -32,10 +32,10 @@ namespace DVDRentalUI
         }
 
         [WebMethod]
-        public void AddSales(String d, String r, String c, String e)
+        public void AddSales(String r, String c, String e)
         {
             var s = new SalesBLL();
-            s.AddSales(Convert.ToDateTime(d), Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
+            s.AddSales(Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
         }
 
         [WebMethod]
@@ -66,6 +66,57 @@ namespace DVDRentalUI
         public List<UserDto> getAllClerks()
         {
             return new UserBLL().getAllClerks();
+        }
+
+        [WebMethod]
+        public NotificationDto GetNotificationById(string id)
+        {
+            return new NotificationBLL().GetNotificationById(Convert.ToInt32(id));
+        }
+
+        [WebMethod]
+        public List<NotificationDto> GetAllNotificationsByDate(string date)
+        {
+            return new NotificationBLL().GetAllNotificationsByDate(date);
+        }
+
+        [WebMethod]
+        public List<NotificationDto> GetAllNotifications()
+        {
+            return new NotificationBLL().GetAllNotifications();
+        }
+
+        [WebMethod(EnableSession = true)]
+        public resultDto checkLogin(string username, string password)
+        {
+            HashBLL h = new HashBLL();
+            resultDto result = new resultDto();
+            var user = new UserBLL().getUserCredentials(username);
+            if (user != null)
+            {
+                if (h.VerifyHash(password, user.Password))
+                {
+                    //login details are correct
+                    result.Pass = "true";
+                    result.Role = user.Role;
+                    Session.Timeout = 30;
+                    Session["ID"] = user.ID;
+                    Session["UserName"] = user.Username;
+                    Session["Role"] = user.Role;
+                }
+                else
+                    result.Pass = "false";
+            }
+            else
+                result.Pass = "false";
+
+            return result;
+        }
+
+        public class resultDto
+        {
+            public string Pass { get; set; }
+            public string Role { get; set; }
         }
     }
 }

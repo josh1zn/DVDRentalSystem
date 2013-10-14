@@ -9,28 +9,20 @@ namespace DVDRentalCode
 {
      public class SalesBLL
     {    //Add a sale into the database.
-         public void AddSales(DateTime _date,int rid,int cid,int eid)
+         public void AddSales(int rid,int cid,int eid)
          {
              var db = new DVDRentalEntities();
              var s = new Sale
              {
-                 Date=_date,
+                 Date= DateTime.Now,
                  RentalItemID=rid,
                  CustomerID=cid,
                  EmployeeID=eid,
              };
              db.Sales.Add(s);
              db.SaveChanges();
-
-
          }
-
-         //get sales method (will code if needed).
-
-
-
-       
-     
+         //get sales method (will code if needed).   
     }
     //Use when retrieving all sales /particular sales from the dtatabse if needed.
     // public class SalesDto

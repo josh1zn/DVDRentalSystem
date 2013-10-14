@@ -7,25 +7,28 @@ using System.Security.Cryptography;
 
 namespace DVDRentalCode
 {
-	class HashBLL
+	public class HashBLL
 	{
-		public String CreateHash(MD5 md5Hash, string input)
+		public String CreateHash(string input)
 		{
-			byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+            using (MD5 md5Hash = MD5.Create())
+            {
+                byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
 
-			StringBuilder sBuilder = new StringBuilder();
-			for (int i = 0; i < data.Length; i++)
-			{
-				sBuilder.Append(data[i].ToString("X2"));
-			}
+                StringBuilder sBuilder = new StringBuilder();
+                for (int i = 0; i < data.Length; i++)
+                {
+                    sBuilder.Append(data[i].ToString("X2"));
+                }
 
-			return sBuilder.ToString();
+                return sBuilder.ToString();
+            }
 		}
 
 
-		public bool VerifyHash(MD5 md5Hash, string input, string hash)
+		public bool VerifyHash(string input, string hash)
 		{
-			string hashInput = CreateHash(md5Hash, input);
+			string hashInput = CreateHash(input);
 
 			StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 
