@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.Master" AutoEventWireup="true" CodeBehind="AddCustomer.aspx.cs" Inherits="DVDRentalUI.AddCustomer" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <script src="Scripts/jquery-2.0.3.min.js"></script>
+    <script src="Bootstrap/js/bootstrap.js"></script>
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
 </asp:Content>

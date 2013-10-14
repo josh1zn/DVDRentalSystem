@@ -32,10 +32,10 @@ namespace DVDRentalUI
         }
 
         [WebMethod]
-        public void AddSales(String d, String r, String c, String e)
+        public void AddSales(String r, String c, String e)
         {
             var s = new SalesBLL();
-            s.AddSales(Convert.ToDateTime(d), Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
+            s.AddSales(Convert.ToInt32(r), Convert.ToInt32(c), Convert.ToInt32(e));
         }
 
         [WebMethod]
