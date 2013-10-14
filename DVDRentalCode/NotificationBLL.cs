@@ -65,6 +65,7 @@ namespace DVDRentalCode
                     ID = n.ID.ToString(),
                     Date = n.Date.ToString(),
                     CustomerID = n.CustomerID.ToString(),
+                    FName = n.User.Name + " " + n.User.Surname,
                 });
             }
             return LRI;
@@ -78,5 +79,6 @@ namespace DVDRentalCode
         public string ID { get; set; }
         public string Date { get; set; }
         public string CustomerID { get; set; }
+        public string FName { get; set; }
     }
 }
