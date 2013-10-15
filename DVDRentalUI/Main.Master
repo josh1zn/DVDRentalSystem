@@ -74,7 +74,7 @@
                     <li id="sendNotifications" class="navbar-link"><a href="SendNotifications.aspx">Send Notifications</a></li>
                     <li id="viewNotifications" class="navbar-link"><a href="ViewNotifications.aspx">View Notifications</a></li>
                     <li id="addEmployee" class="navbar-link"><a href="AddEmployee.aspx">Add Employee</a></li>
-                    <li id="viewCustomer" class="navbar-link"><a href="#">View Customer</a></li>
+                    <li id="viewCustomer" class="navbar-link"><a href="CustomerDetails.aspx">View Customer</a></li>
                     <li id="accountDetails" class="navbar-link"><a href="AccountDetails.aspx">Account Details</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
