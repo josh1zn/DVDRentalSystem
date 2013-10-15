@@ -24,5 +24,5 @@ function QueryParameter(parameterName) {
             }
         }
     }
-    return hash;
+    return value;
 }

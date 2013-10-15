@@ -123,6 +123,7 @@ namespace DVDRentalCode
             {
                 ID = u.ID.ToString(),
                 Username = u.Username,
+                Password = u.Password,
                 Role = u.Role
             };
         }

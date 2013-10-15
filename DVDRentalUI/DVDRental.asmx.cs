@@ -85,5 +85,27 @@ namespace DVDRentalUI
         {
             return new NotificationBLL().GetAllNotifications();
         }
+
+        [WebMethod(EnableSession = true)]
+        public bool checkLogin(string username, string password)
+        {
+            HashBLL h = new HashBLL();
+            bool result;
+            var user = new UserBLL().getUserCredentials(username);
+            if (user != null)
+            {
+                if (h.VerifyHash(password, user.Password))
+                {
+                    //login details are correct
+                    result = true;
+                }
+                else
+                    result = false;
+            }
+            else
+                result = false;
+
+            return result;
+        }
     }
 }
