@@ -11,7 +11,7 @@ namespace DVDRentalUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            hfRole.Value = Session["Role"].ToString();
         }
     }
 }

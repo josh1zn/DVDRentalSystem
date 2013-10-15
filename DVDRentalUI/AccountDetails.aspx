@@ -6,11 +6,12 @@
     <link href="Bootstrap/css/Custom.css" rel="stylesheet" />
     <script type="text/javascript">
         $(document).ready(function () {
-            getAccountDetails(1);
+            var id = $("#<%=hfID.ClientID%>").val();
+            getAccountDetails(id);
         });
 
         function getAccountDetails(CustomerID) {
-            HandleAjax("getCustomerbyID", "{ID:'" + CustomerID + "'}", populateItems)
+            HandleAjax("getCustomerbyID", "{id:'" + CustomerID + "'}", populateItems)
         }
 
         function populateItems(data) {
@@ -34,7 +35,6 @@
         </div>
         <div class="panel-body">
             <table class="table-bordered " >
-                <tr><td style="padding:10px"><span class="label label-primary">Customer ID:</span></td><td style="padding:10px"><span  id ="custid"></span></td></tr>
                 <tr><td style="padding:10px"><span class="label label-primary">Name:</span></td><td style="padding:10px"><span  id="cust_name"></span></td></tr>
                 <tr><td style="padding:10px"><span class="label label-primary">surname:</span></td><td style="padding:10px"><span id="cust_surname"></span></td></tr>
                 <tr><td style="padding:10px"><span class="label label-primary">IDentity No.:</span></td><td style="padding:10px"><span  id="cust_IDno"></span></td></tr>
@@ -47,4 +47,5 @@
 
         </div>
     </div>
+    <asp:HiddenField ID="hfID" runat="server" value=""/>
 </asp:Content>

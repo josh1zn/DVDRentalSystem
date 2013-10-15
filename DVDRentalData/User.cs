@@ -18,6 +18,7 @@ namespace DVDRentalData
         {
             this.Notifications = new HashSet<Notification>();
             this.Sales = new HashSet<Sale>();
+            this.Sales1 = new HashSet<Sale>();
         }
     
         public int ID { get; set; }
@@ -34,7 +35,7 @@ namespace DVDRentalData
         public string Password { get; set; }
     
         public virtual ICollection<Notification> Notifications { get; set; }
-        public virtual Sale Sale { get; set; }
         public virtual ICollection<Sale> Sales { get; set; }
+        public virtual ICollection<Sale> Sales1 { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DVDRentalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DVDRentalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="DVDRentalModelStoreContainer">
           <EntitySet Name="Notifications" EntityType="DVDRentalModel.Store.Notifications" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RentalItems" EntityType="DVDRentalModel.Store.RentalItems" store:Type="Tables" Schema="dbo" />
@@ -85,13 +85,13 @@
         </Association>
         <Association Name="FK_Sales_Customers">
           <End Role="Users" Type="DVDRentalModel.Store.Users" Multiplicity="1" />
-          <End Role="Sales" Type="DVDRentalModel.Store.Sales" Multiplicity="0..1" />
+          <End Role="Sales" Type="DVDRentalModel.Store.Sales" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Users">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Sales">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -119,33 +119,32 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DVDRentalModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="DVDRentalEntities" p1:LazyLoadingEnabled="true">
           <EntitySet Name="Notifications" EntityType="DVDRentalModel.Notification" />
           <EntitySet Name="RentalItems" EntityType="DVDRentalModel.RentalItem" />
-          <EntitySet Name="Sales" EntityType="DVDRentalModel.Sale" />
           <EntitySet Name="Users" EntityType="DVDRentalModel.User" />
           <AssociationSet Name="FK_Notifications_Users" Association="DVDRentalModel.FK_Notifications_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="Notifications" EntitySet="Notifications" />
           </AssociationSet>
+          <EntitySet Name="Sales" EntityType="DVDRentalModel.Sale" />
           <AssociationSet Name="FK_Sales_RentalItems" Association="DVDRentalModel.FK_Sales_RentalItems">
-            <End Role="RentalItems" EntitySet="RentalItems" />
-            <End Role="Sales" EntitySet="Sales" />
+            <End Role="RentalItem" EntitySet="RentalItems" />
+            <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Customers" Association="DVDRentalModel.FK_Sales_Customers">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Sales" EntitySet="Sales" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
           <AssociationSet Name="FK_Sales_Employees" Association="DVDRentalModel.FK_Sales_Employees">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Sales" EntitySet="Sales" />
+            <End Role="User" EntitySet="Users" />
+            <End Role="Sale" EntitySet="Sales" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="Notification">
           <Key>
             <PropertyRef Name="ID" />
@@ -163,20 +162,7 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Type" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
-          <NavigationProperty Name="Sales" Relationship="DVDRentalModel.FK_Sales_RentalItems" FromRole="RentalItems" ToRole="Sales" />
-        </EntityType>
-        <EntityType Name="Sale">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="RentalItemID" Type="Int32" Nullable="false" />
-          <Property Name="CustomerID" Type="Int32" Nullable="false" />
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="RentalItem" Relationship="DVDRentalModel.FK_Sales_RentalItems" FromRole="Sales" ToRole="RentalItems" />
-          <NavigationProperty Name="User" Relationship="DVDRentalModel.FK_Sales_Customers" FromRole="Sales" ToRole="Users" />
-          <NavigationProperty Name="User1" Relationship="DVDRentalModel.FK_Sales_Employees" FromRole="Sales" ToRole="Users" />
+          <NavigationProperty Name="Sales" Relationship="DVDRentalModel.FK_Sales_RentalItems" FromRole="RentalItem" ToRole="Sale" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -195,8 +181,8 @@
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
           <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
           <NavigationProperty Name="Notifications" Relationship="DVDRentalModel.FK_Notifications_Users" FromRole="Users" ToRole="Notifications" />
-          <NavigationProperty Name="Sale" Relationship="DVDRentalModel.FK_Sales_Customers" FromRole="Users" ToRole="Sales" />
-          <NavigationProperty Name="Sales" Relationship="DVDRentalModel.FK_Sales_Employees" FromRole="Users" ToRole="Sales" />
+          <NavigationProperty Name="Sales" Relationship="DVDRentalModel.FK_Sales_Customers" FromRole="User" ToRole="Sale" />
+          <NavigationProperty Name="Sales1" Relationship="DVDRentalModel.FK_Sales_Employees" FromRole="User" ToRole="Sale" />
         </EntityType>
         <Association Name="FK_Notifications_Users">
           <End Role="Users" Type="DVDRentalModel.User" Multiplicity="1" />
@@ -210,43 +196,56 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Sale">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="Date" Nullable="false" Precision="3" />
+          <Property Type="Int32" Name="RentalItemID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="Int32" Name="EmployeeID" Nullable="false" />
+          <NavigationProperty Name="RentalItem" Relationship="DVDRentalModel.FK_Sales_RentalItems" FromRole="Sale" ToRole="RentalItem" />
+          <NavigationProperty Name="User" Relationship="DVDRentalModel.FK_Sales_Customers" FromRole="Sale" ToRole="User" />
+          <NavigationProperty Name="User1" Relationship="DVDRentalModel.FK_Sales_Employees" FromRole="Sale" ToRole="User" />
+        </EntityType>
         <Association Name="FK_Sales_RentalItems">
-          <End Role="RentalItems" Type="DVDRentalModel.RentalItem" Multiplicity="1" />
-          <End Role="Sales" Type="DVDRentalModel.Sale" Multiplicity="*" />
+          <End Type="DVDRentalModel.RentalItem" Role="RentalItem" Multiplicity="1" />
+          <End Type="DVDRentalModel.Sale" Role="Sale" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="RentalItems">
+            <Principal Role="RentalItem">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Sales">
+            <Dependent Role="Sale">
               <PropertyRef Name="RentalItemID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sales_Customers">
-          <End Role="Users" Type="DVDRentalModel.User" Multiplicity="1" />
-          <End Role="Sales" Type="DVDRentalModel.Sale" Multiplicity="0..1" />
+          <End Type="DVDRentalModel.User" Role="User" Multiplicity="1" />
+          <End Type="DVDRentalModel.Sale" Role="Sale" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Sales">
-              <PropertyRef Name="ID" />
+            <Dependent Role="Sale">
+              <PropertyRef Name="CustomerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Sales_Employees">
-          <End Role="Users" Type="DVDRentalModel.User" Multiplicity="1" />
-          <End Role="Sales" Type="DVDRentalModel.Sale" Multiplicity="*" />
+          <End Type="DVDRentalModel.User" Role="User" Multiplicity="1" />
+          <End Type="DVDRentalModel.Sale" Role="Sale" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Users">
+            <Principal Role="User">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="Sales">
+            <Dependent Role="Sale">
               <PropertyRef Name="EmployeeID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -271,17 +270,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Sales">
-            <EntityTypeMapping TypeName="DVDRentalModel.Sale">
-              <MappingFragment StoreEntitySet="Sales">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="RentalItemID" ColumnName="RentalItemID" />
-                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="DVDRentalModel.User">
               <MappingFragment StoreEntitySet="Users">
@@ -297,6 +285,17 @@
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sales">
+            <EntityTypeMapping TypeName="DVDRentalModel.Sale">
+              <MappingFragment StoreEntitySet="Sales">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="RentalItemID" ColumnName="RentalItemID" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

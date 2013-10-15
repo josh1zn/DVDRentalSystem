@@ -22,6 +22,7 @@
             $.each(items, function (i,o) {
                 $("#dlItem").append("<option value='" + o.ID + "'>" + o.Name + "</option>");
             });
+            $("#dlItem").children().first().attr("selected", "selected");
         }
 
         function getAllCustomers() {
@@ -30,9 +31,10 @@
 
         function populateCustomers(data) {
             var customers = data.d;
-            $.each(customers, function () {
+            $.each(customers, function (i,o) {
                 $("#dlCustomer").append("<option value='" + o.ID + "'>" + o.Name + " " + o.Surname + "</option>");
             });
+            $("#dlCustomer").children().first().attr("selected", "selected");
         }
 
         function refreshItems() {
@@ -41,7 +43,7 @@
         }
 
         function addSale() {
-            var data = "{rid:'" + $("#dlItem").val() + "', cid:'" + $("#dlCustomer").val() + "', eid:'" + QueryParameter("eid") + "'}";
+            var data = "{rentalItemID:'" + $("#dlItem").val() + "', customerID:'" + $("#dlCustomer").val() + "'}";
             HandleAjax("AddSales", data, saveSale);
         }
 

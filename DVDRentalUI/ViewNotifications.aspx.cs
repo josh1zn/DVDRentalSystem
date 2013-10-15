@@ -11,7 +11,10 @@ namespace DVDRentalUI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["Role"] == null || (Session["Role"].ToString() != "Clerk" && Session["Role"].ToString() != "Administrator"))
+            {
+                Response.Redirect("Login.aspx");
+            }
         }
     }
 }
